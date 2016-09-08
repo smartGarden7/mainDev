@@ -18,33 +18,24 @@
 void setup() {
 	initPorts();
 	init_display();
-	Serial.begin(115200);
-	connectToWiFi();
-	main_screen();	// should contain the info about WIFi condition and be ready for next functions
+	checkFailures();	// Scan EEPROM registers for failures and take suitable action.
+	Serial.begin(115200);	// Begin serial data transmission at 115200 bits/sec.
+	connectToWiFi();	// 45 seconds max until connection is established.
+	main_screen();		// Contains info about WIFi condition and be ready for next functions
 }
 
 void loop() {
-	if(WiFi == false){
-		if(irrigationCompleted == true) {
-			delay48hours();
-			irrigationCompleted == false;
-		}
-		else {
-			if(askForManualProg() == true) 	{
-				manualProg();	// irrigate 3 hours
-			}
-			else {
-				connectToWiFi();
-				autoProgram(WiFi);	// false for program without WiFi, true for prgram with WiFi.
-			}
-		}
+	if(irrigationCompleted == true) {
+		delay48hours();
+		irrigationCompleted == false;
 	}
 	else {
-		if(askForManualProg == false) {
-			autoProgram(WiFi);
+		if(askForManualProg() == true) {
+			manualProg();	// irrigate 3 hours
+			irrigationCompleted == true;
 		}
 		else {
-			manualProg();	// irrigate 3 hours
+			autoProgram(WiFi);	// Automatic program - flow depends on WiFi existence
 		}
 	}
 }
