@@ -27,7 +27,7 @@ void setup() {
 
 void loop() {
 	if(irrigationCompleted == true) {
-		delay48hours();
+		delayHours(48);
 		irrigationCompleted == false;
 	}
 	else {
