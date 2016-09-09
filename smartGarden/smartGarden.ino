@@ -30,13 +30,11 @@ void loop() {
 		delayHours(48);
 		irrigationCompleted == false;
 	}
+	else if(askForManualProg() == true) {
+		manualProg();	// irrigate 3 hours
+		irrigationCompleted == true;
+	}
 	else {
-		if(askForManualProg() == true) {
-			manualProg();	// irrigate 3 hours
-			irrigationCompleted == true;
-		}
-		else {
-			autoProg(WiFi);	// Automatic program - flow depends on WiFi existence
-		}
+		autoProg(WiFi);	// Automatic program - flow depends on WiFi existence
 	}
 }
