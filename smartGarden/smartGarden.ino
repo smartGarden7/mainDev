@@ -36,7 +36,7 @@ void loop() {
 			irrigationCompleted == true;
 		}
 		else {
-			autoProgram(WiFi);	// Automatic program - flow depends on WiFi existence
+			autoProg(WiFi);	// Automatic program - flow depends on WiFi existence
 		}
 	}
 }
