@@ -1,6 +1,7 @@
 #include "func.hpp"
 #include "tft.hpp"
 #include "global.hpp"
+#include <EEPROM.h>
 
 /* Tasks before 09/09/16:
 	1. Change this file according to lastest flow chart.
@@ -18,7 +19,7 @@
 void setup() {
 	initPorts();
 	init_display();
-	checkFailures();	// Scan EEPROM registers for failures and take suitable action.
+	checkFailures(EEPROM.read(1), EEPROM.read(11));	// Scan EEPROM registers for failures and take suitable action.
 	Serial.begin(115200);	// Begin serial data transmission at 115200 bits/sec.
 	connectToWiFi();	// 45 seconds max until connection is established.
 	main_screen();		// Contains info about WIFi condition and be ready for next functions
