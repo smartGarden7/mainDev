@@ -5,6 +5,6 @@ extern void readMoistureSensors(void);
 extern void readSensor(int sensor);
 extern int  countDrySensors(void);
 extern bool getForecast(void);
-extern void Irrigate(int minutes);
+extern void irrigateMinutes(int minutes);
 extern void blinkLED(int pin, int freq);
 #endif
