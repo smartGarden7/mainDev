@@ -17,7 +17,7 @@ void initPorts(void) {
   digitalWrite(activateSensors_pin, LOW);
 }
 
-void checkFailures(byte minutesPassed, byte irrigationFail) {
+void checkFailures(int minutesPassed, int irrigationFail) {
 
 }
 
