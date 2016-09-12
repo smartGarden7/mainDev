@@ -29,4 +29,5 @@ extern void printStatus_display(char text[], int size);
 extern void main_screen(void);
 extern void welcome_screen(void);
 extern void wifi_screen(void);
+extern void checkFailures_screen(void);
 #endif
