@@ -10,7 +10,7 @@ const int activateSensors_pin = 12; // D12 - output
                                     // Action pins:
 const int statusLED = 10;           // D10 - output - GREEN - stable green when no need to irrigate, blinking during irrigation process
 const int irrigation = 11;          // D11 - output - triggers the relay to open the valve
-const int manualStart_button = 13;  // D13 - input - connected to push button which triggers manual program
+const int button = 13;  // D13 - input - connected to push button which triggers manual program
 
                                     // Variables:
 bool wiFi = false;                  // wiFi connection status
