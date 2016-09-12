@@ -2,7 +2,7 @@
 #define MAIN_HPP
 // This file DECLARES global functions
 extern void initPorts(void);                                      // Initialize all inputs and outputs
-extern void checkFailures(byte inProcess, byte irrigationFail);   // use EEPROM registers to determine faliures
+extern void checkFailures(int inProcess, int irrigationFail);   // use EEPROM registers to determine faliures
 extern void connectToWiFi(void);                                  // Wait for ESP8266 to send data over serial (RX)
 
 extern void delayHours(int hours);                                // This delay function should include message to diplay
