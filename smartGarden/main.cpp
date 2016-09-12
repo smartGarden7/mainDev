@@ -5,24 +5,26 @@
 #include "func.hpp"
 #include "tft.hpp"
 
-void initPorts(void) {
+void initPorts(void) {  // V
   // Setup pins:
-  pinMode(manualStart_button, INPUT_PULLUP);
-  pinMode(okLED, OUTPUT);
+  pinMode(button, INPUT_PULLUP);
+  pinMode(statusLED, OUTPUT);
   pinMode(irrigation, OUTPUT);
   pinMode(activateSensors_pin, OUTPUT);         
   // Turn off all outputs:
-  digitalWrite(okLED, LOW);
+  digitalWrite(statusLED, LOW);
   digitalWrite(irrigation, LOW);
   digitalWrite(activateSensors_pin, LOW);
 }
 
-extern void checkFailures(int minutesPassed, bool irrigationFail) {
-  print_displa("Starting initialization test");
+extern void checkFailures(int minutesPassed, bool irrigationFail) {   // check if bool works instead of int / byte
+  checkFailures_screen(void);
   if(minutesPassed != 180) {
     int minutesLeft = 180 - minutesPassed;
-    print_display("Irrigation Error.",size,color,x,y);
-    printint_display(minutesLeft,size,color,x,y)
+    print_display("Previous irrigation was not finished",2, WHITE, 40, 100);
+    delay(2000);
+    print_display("Continue irriating ?",2, WHITE, 40, 130);
+   printint_display(minutesLeft,size,color,60,160);
     print_display("minutes left. Re-starting irrigation process.",size,color,x,y)
     irrigateMinutes(minutesLeft);
   }
